@@ -24,13 +24,17 @@ class Charity(models.Model):
 
 class TaskManager(models.Manager):
     def related_tasks_to_charity(self, user):
-        pass
+        return self.filter(charity__user=user)
 
     def related_tasks_to_benefactor(self, user):
-        pass
+        return self.filter(assigned_benefactor__user=user)
 
     def all_related_tasks_to_user(self, user):
-        pass
+        return self.filter(
+            models.Q(charity__user=user) |
+            models.Q(assigned_benefactor__user=user) |
+            models.Q(state=Task.ActivityState.PENDING)
+        )
 
 class Task(models.Model):
     class GenderLimit(models.TextChoices):
@@ -60,12 +64,7 @@ class Task(models.Model):
         default=ActivityState.PENDING
     )
     title = models.CharField(max_length=60)
-
-
-
-
-
     
-    
-    
+    # managers
+    objects = TaskManager()
     
