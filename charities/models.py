@@ -66,5 +66,5 @@ class Task(models.Model):
     title = models.CharField(max_length=60)
     
     # managers
-    objects = TaskManager()
+    objects: TaskManager = TaskManager()
     
