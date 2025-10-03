@@ -22,6 +22,16 @@ class Charity(models.Model):
     reg_number = models.CharField(max_length=10)
 
 
+class TaskManager(models.Manager):
+    def related_tasks_to_charity(self, user):
+        pass
+
+    def related_tasks_to_benefactor(self, user):
+        pass
+
+    def all_related_tasks_to_user(self, user):
+        pass
+
 class Task(models.Model):
     class GenderLimit(models.TextChoices):
         MALE = "M", "Male"

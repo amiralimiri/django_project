@@ -1,3 +1,6 @@
 Django==4.2.25
 pillow==11.3.0
 python-decouple==3.8
+django-cors-headers==4.9.0
+djangorestframework==3.16.1
+django-filter==25.1
